@@ -11,7 +11,7 @@ app.use(cors({
 
 app.use(express.json());
 
-const uri = "mongodb+srv://singhanuj53883_db_user:anujusingcluster2006@cluster0.ehqylmz.mongodb.net/FinanceData?appName=Cluster0";
+const uri = process.env.URL;
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 

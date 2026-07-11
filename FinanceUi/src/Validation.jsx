@@ -5,6 +5,7 @@ import cross from './assets/cross.png'
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 export default function Validation() {
+    let backend='http://localhost:8000';
    let dispatch= useDispatch();
 let [valid,Setvalid]=useState({
     Uemail:'',
@@ -25,7 +26,7 @@ if(!valid.Uemail.includes('@')||valid.Uemail==''){
     return toast.error('Email Can not be empty or wrong type')
 }
 
-let res=await fetch('http://localhost:8000/user/Validate',{
+let res=await fetch(`${backend}/user/Validate`,{
     method:'POST',
     headers:{
          "Content-Type": "application/json"

@@ -37,7 +37,7 @@ let [Open,Setopen]=useState(true)
 let [load,setload]=useState(true)
 let[arr,setarr]=useState([])
 let [count,setcount]=useState(1);
-
+let backend='http://localhost:8000';
    let role=useSelector((state)=>state.First.Role);
 let message=useSelector((state)=>state.First.Message);
 let close=useSelector((state)=>state.First.close);
@@ -74,13 +74,13 @@ callmethod()
 //Fetch Data
 const callmethod=async()=>{
    if(sort){
-    let res=await fetch('http://localhost:8000/user/findDsc');
+    let res=await fetch(`${backend}/user/findDsc`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
    }
    else{
-let res=await fetch('http://localhost:8000/user/find');
+let res=await fetch(`${backend}/user/find`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
@@ -98,7 +98,7 @@ clearFields()
 const handlesumbmit=async(e)=>{
     e.preventDefault();
     setload(false)
-  let response= await fetch('http://localhost:8000/user/update',{
+  let response= await fetch(`${backend}/user/update`,{
     method:'POST',
       headers: {
         "Content-Type": "application/json"
@@ -106,7 +106,7 @@ const handlesumbmit=async(e)=>{
     body:JSON.stringify(data)
 })
 setTimeout(async() => {
-let res=await fetch('http://localhost:8000/user/findDsc');
+let res=await fetch(`${backend}/user/findDsc`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
@@ -132,7 +132,7 @@ setType('Expense')
 const DoDelete=async(ids)=>{
   let Value=  confirm('Do You Want To Delete This Data')
   if(Value){
-let response=await fetch(`http://localhost:8000/user/Delete?id=${ids}`,{
+let response=await fetch(`${backend}/user/Delete?id=${ids}`,{
     method:'DELETE'
 });
 
@@ -152,7 +152,7 @@ ToDate:''
 
 const handleinput2=async(e)=>{
 let name=e.target.value;
-let data=await fetch(`http://localhost:8000/user/Search?name=${name}`)
+let data=await fetch(`${backend}/user/Search?name=${name}`)
 let searchData=await data.json();
 SetSdata(searchData)
 }
@@ -168,7 +168,7 @@ SetFilter(prod)
 }
 
 useEffect(()=>{
-fetch('http://localhost:8000/user/filter',{
+fetch(`${backend}/user/filter`,{
     method:'POST',
      headers: {
         "Content-Type": "application/json"
@@ -228,7 +228,7 @@ setUclick(false)
 
 
 const handleUpdate=async()=>{
- let res=  await fetch(`http://localhost:8000/user/Update?ID=${Uid}`,{
+ let res=  await fetch(`${backend}/user/Update?ID=${Uid}`,{
        method:'PUT',
          headers: {
         "Content-Type": "application/json"
@@ -236,7 +236,7 @@ const handleUpdate=async()=>{
     body:JSON.stringify(data)
     })
     setTimeout(async() => {
-let res=await fetch('http://localhost:8000/user/findDsc');
+let res=await fetch(`${backend}/user/findDsc`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
