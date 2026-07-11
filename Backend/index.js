@@ -10,7 +10,9 @@ app.use(cors({
 }))
 
 app.use(express.json());
-
+app.get('/',(req,res)=>{
+  res.send('backend Running')
+})
 const uri = process.env.URL;
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
