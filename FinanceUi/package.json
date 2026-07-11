@@ -10,16 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontawesome/fontawesome-svg-core": "^7.2.0",
-    "@fontawesome/free-brands-svg-icons": "^7.2.0",
-    "@fontawesome/free-regular-svg-icons": "^7.2.0",
-    "@fontawesome/free-solid-svg-icons": "^7.2.0",
-    "@fontawesome/react-fontawesome": "^3.3.0",
-    "@fortawesome/fontawesome-svg-core": "^7.3.0",
-    "@fortawesome/free-brands-svg-icons": "^7.3.0",
-    "@fortawesome/free-regular-svg-icons": "^7.3.0",
-    "@fortawesome/free-solid-svg-icons": "^7.3.0",
-    "@fortawesome/react-fontawesome": "^3.3.1",
     "@lottiefiles/dotlottie-react": "^0.19.5",
     "@reduxjs/toolkit": "^2.12.0",
     "@tailwindcss/vite": "^4.2.2",
