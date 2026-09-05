@@ -4,6 +4,7 @@ import img1 from './assets/bolt64.png'
 import { useSelector } from 'react-redux';
 import SideBar from './SideBar';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 export default function Overview() {
 
 window.addEventListener('beforeunload', (event) => {
