@@ -4,6 +4,13 @@ import axios, { Axios } from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 export default function Signup() {
+    window.addEventListener('beforeunload', (event) => {
+    // Cancel the event as stated by the standard.
+    event.preventDefault();
+    
+    // Chrome requires returnValue to be set.
+    event.returnValue = '';
+});
     let navigate=useNavigate();
     let backend=useSelector((state)=>state.First.URL);
   const [formData, setFormData] = useState({

@@ -3,6 +3,7 @@ import mode from './assets/mode.png'
 import img1 from './assets/bolt64.png'
 import { useSelector } from 'react-redux';
 import SideBar from './SideBar';
+import { useNavigate } from 'react-router-dom';
 export default function Overview() {
 
 window.addEventListener('beforeunload', (event) => {
@@ -12,7 +13,13 @@ window.addEventListener('beforeunload', (event) => {
     // Chrome requires returnValue to be set.
     event.returnValue = '';
 });
-
+let Token=localStorage.getItem('UToken');
+let navigate=useNavigate();
+useEffect(()=>{
+ if(!Token){
+        navigate('/Login');
+    }
+},[])  
 let TotalIncome=useSelector((state) => state.First.Total_Income)
 let TotalExpense=useSelector((state) => state.First.Total_Expense)
 let Spending=useSelector((state)=>state.First.Arr)

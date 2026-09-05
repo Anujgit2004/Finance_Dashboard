@@ -3,6 +3,7 @@ import img1 from './assets/bolt64.png'
 import { Link, useNavigate } from 'react-router-dom'
 import overview from './assets/overview.png'
 import transaction from './assets/transaction.png'
+import Logout from './assets/Logout.png'
 import bulb from './assets/bulb.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { UpdateClick, UpdateRole } from './slice'
@@ -76,6 +77,10 @@ navigate('/Login');
       <p className='max-lg:text-sm text-white'>Transaction</p> 
       </div>
       </Link>
+       <div className={`border ${click?'bg-[#8E51FF] text-white border-0':''}  flex flex-col px-4 py-1 items-center rounded-xl`} onClick={handleLogout}>
+          <img className='w-8 h-8 max-lg:w-5 max-lg:h-5' src={Logout} alt="" />
+      <p className='max-lg:text-sm text-white'>Logout</p> 
+      </div>
       </div>
     </div>
   )

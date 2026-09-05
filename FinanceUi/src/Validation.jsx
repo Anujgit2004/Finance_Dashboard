@@ -4,7 +4,15 @@ import { UpdateClose, UpdateMessage, UpdateRole } from './slice';
 import cross from './assets/cross.png'
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 export default function Validation() {
+    let Token=localStorage.getItem('UToken');
+    let navigate=useNavigate();
+    useEffect(()=>{
+     if(!Token){
+            navigate('/Login');
+        }
+    },[]) 
     let backend=useSelector((state)=>state.First.URL);
    let dispatch= useDispatch();
 let [valid,Setvalid]=useState({
