@@ -6,6 +6,8 @@ import store from "./store";
 import { Transaction } from "./Transaction";
 import './App.css'
 import Validation from './Validation';
+import Login from './Login';
+import Signup from './SignUp';
 function App() {
 
   return (
@@ -14,6 +16,8 @@ function App() {
     <BrowserRouter>
 <Routes>
   <Route path="/" element={<Transaction/>}></Route>
+  <Route path="/Login" element={<Login/>}></Route>
+  <Route path="/SignUp" element={<Signup/>}></Route>
   <Route path="/Overview" element={<Overview/>}></Route>
   <Route path="/Validation" element={<Validation/>}></Route>
 </Routes>

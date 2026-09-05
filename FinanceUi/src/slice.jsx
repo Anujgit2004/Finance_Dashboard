@@ -10,7 +10,9 @@ Total_Expense:0,
 Role:'👁️ User',
 close:false,
 Message:'',
-Arr:[]
+Arr:[],
+URL:'https://dash-back-4hc3.onrender.com',
+UserID:''
 },
 reducers:{
 ChangeType:(state,action)=>{
@@ -37,7 +39,10 @@ UpdateMessage:(state,action)=>{
 UpdateClose:(state,action)=>{
     state.close=action.payload
 },
+UpdateID:(state,action)=>{
+    state.UserID=action.payload
+}
 }
 })
-export const {ChangeType,UpdateExpense,UpdateIncome,UpdateArray,UpdateClick,UpdateRole,UpdateMessage,UpdateClose} =SliceName.actions;
+export const {ChangeType,UpdateExpense,UpdateIncome,UpdateArray,UpdateClick,UpdateRole,UpdateMessage,UpdateClose,UpdateID} =SliceName.actions;
 export default SliceName.reducer;

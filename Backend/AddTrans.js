@@ -1,5 +1,11 @@
 let mongoose=require('mongoose');
+const Users = require('./User');
 let Addmaterial=mongoose.Schema({
+DataId:{
+type:mongoose.Schema.Types.ObjectId,
+ref:Users,
+required:true,
+},
 Type:{
 type:String,
 required:true

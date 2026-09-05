@@ -17,13 +17,21 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useState } from 'react'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ChangeType, UpdateArray, UpdateClose, UpdateExpense, UpdateIncome, UpdateMessage, UpdateRole } from './slice'
 import SideBar from './SideBar'
 import { ReducerType } from '@reduxjs/toolkit'
 import Validation from './Validation'
 export function Transaction(){
+let navigate=useNavigate();
+let Token=localStorage.getItem('UToken');
+ let UID=localStorage.getItem('UId');
+useEffect(()=>{
+ if(!Token){
+        navigate('/Login');
+    }
+},[])  
 let dispatch=useDispatch()
 let[click,setclick]=useState(true)
 let[Uclick,setUclick]=useState(true)
@@ -37,11 +45,16 @@ let [Open,Setopen]=useState(true)
 let [load,setload]=useState(true)
 let[arr,setarr]=useState([])
 let [count,setcount]=useState(1);
-let backend='https://dash-back-4hc3.onrender.com';
-   let role=useSelector((state)=>state.First.Role);
+
+
+let backend=useSelector((state)=>state.First.URL);
+
+let role=useSelector((state)=>state.First.Role);
 let message=useSelector((state)=>state.First.Message);
 let close=useSelector((state)=>state.First.close);
+console.log(UID);
 let [data,setdata]=useState({
+DataId:UID,  
 Type:'Expense',
 Description:'',
 Amount:'',
@@ -57,7 +70,7 @@ FDate:'',
 ToDate:''  
 })
 
-
+console.log(data);
 const handleinput=(e)=>{
 let prod={...data}
 let value=e.target.value;
@@ -74,13 +87,13 @@ callmethod()
 //Fetch Data
 const callmethod=async()=>{
    if(sort){
-    let res=await fetch(`${backend}/user/findDsc`);
+    let res=await fetch(`${backend}/user/findDsc?id=${UID}`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
    }
    else{
-let res=await fetch(`${backend}/user/find`);
+let res=await fetch(`${backend}/user/find?id=${UID}`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
@@ -106,7 +119,7 @@ const handlesumbmit=async(e)=>{
     body:JSON.stringify(data)
 })
 setTimeout(async() => {
-let res=await fetch(`${backend}/user/findDsc`);
+let res=await fetch(`${backend}/user/findDsc?id=${UID}`);
 let data=await res.json();
 SetSdata(data)
 clearFields()
@@ -117,6 +130,7 @@ setload(true)
 
 let clearFields=()=>{
 setdata({
+ DataId:UID,  
  Type:'Expense',
 Description:'',
 Amount:'',

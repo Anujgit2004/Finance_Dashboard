@@ -6,6 +6,7 @@ const { route } = require('./Router');
 require('dotenv').config();
 let cors=require('cors');
 app.use(cors({
+  
     origin:'https://finance-dashboard-q7kv.onrender.com',
 }))
 

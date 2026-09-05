@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import img1 from './assets/bolt64.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import overview from './assets/overview.png'
 import transaction from './assets/transaction.png'
 import bulb from './assets/bulb.png'
@@ -8,13 +8,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UpdateClick, UpdateRole } from './slice'
 export default function SideBar() {
 let dispatch=useDispatch();
+let navigate=useNavigate();
  let click=useSelector((state)=>state.First.click); 
  let message=useSelector((state)=>state.First.Message);
  let role=useSelector((state)=>state.First.Role); 
  const handleOption=(e)=>{
  dispatch(UpdateRole(e.target.value))
  }
-
+const handleLogout=()=>{
+localStorage.removeItem('UId');
+localStorage.removeItem('UToken');
+navigate('/Login');
+}
   return (
     <div>
       <div className='w-1/6 max-md:hidden fixed min-h-screen border border-l-0 border-t-0 border-slate-800 bg-[#020618]'>
@@ -47,11 +52,11 @@ let dispatch=useDispatch();
       
       </div>
       <div className="flex flex-col absolute w-full bottom-5 border-l-0 border border-b-0 border-slate-800 p-2 items-center gap-3 items-start">
-        <p className='text-gray-400 max-lg:text-sm'>ROLE</p>  
-      <select name="role" className='text-white max-lg:text-sm cursor-pointer w-full rounded-xl bg-slate-800 p-2 focus:outline-none' onChange={handleOption}>
+      {/* <select name="role" className='text-white max-lg:text-sm cursor-pointer w-full rounded-xl bg-slate-800 p-2 focus:outline-none' onChange={handleOption}>
           <option  className='text-white bg-blue-500 hover:bg-blue-500' value="👑 Admin" selected={role=='👑 Admin'?true:false} >👑 Admin</option>
            <option className='text-white bg-blue-500' value="👁️ User" selected={role=='👁️ User'?true:false} >👁️ User</option>
-      </select>
+      </select> */}
+      <button onClick={handleLogout} className='text-white max-lg:text-sm mt-2 cursor-pointer w-4/6 rounded-xl bg-red-800 p-2 focus:outline-none'>Logout</button>
       </div>
       <div>
       

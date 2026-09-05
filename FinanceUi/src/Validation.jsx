@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UpdateClose, UpdateMessage, UpdateRole } from './slice';
 import cross from './assets/cross.png'
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 export default function Validation() {
-    let backend='https://dash-back-4hc3.onrender.com';
+    let backend=useSelector((state)=>state.First.URL);
    let dispatch= useDispatch();
 let [valid,Setvalid]=useState({
     Uemail:'',
