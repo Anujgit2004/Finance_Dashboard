@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios, { Axios } from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UpdateID } from "./slice";
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,6 +10,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 let dispatch=useDispatch();
+let backend=useSelector((state)=>state.First.URL);
 let navigate=useNavigate();
   const UData={
     UEmail:email,
@@ -29,7 +30,7 @@ let navigate=useNavigate();
 
     console.log(UData);
     setLoading(true);
-let response =await axios.post('http://localhost:8000/user/Login',UData);
+let response =await axios.post(`${backend}/user/Login`,UData);
 if(response.data.message){
   alert(response.data.message);
 }

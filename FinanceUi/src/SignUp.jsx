@@ -2,8 +2,10 @@
 import { useState } from "react";
 import axios, { Axios } from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Signup() {
     let navigate=useNavigate();
+    let backend=useSelector((state)=>state.First.URL);
   const [formData, setFormData] = useState({
     UName: "",
     UEmail: "",
@@ -40,7 +42,7 @@ export default function Signup() {
     setLoading(true);
 
     // API call will go here
-   let response =await axios.post('http://localhost:8000/user/SignUp',formData);
+   let response =await axios.post(`${backend}/user/SignUp`,formData);
 if(response.data.message){
   alert(response.data.message);
 }
