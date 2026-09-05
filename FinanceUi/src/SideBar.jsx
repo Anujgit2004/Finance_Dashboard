@@ -77,7 +77,7 @@ navigate('/Login');
       <p className='max-lg:text-sm text-white'>Transaction</p> 
       </div>
       </Link>
-       <div className={`border ${click?'bg-[#8E51FF] text-white border-0':''}  flex flex-col px-4 py-1 items-center rounded-xl`} onClick={handleLogout}>
+       <div className={`border text-white flex flex-col px-4 py-1 items-center rounded-xl`} onClick={handleLogout}>
           <img className='w-8 h-8 max-lg:w-5 max-lg:h-5' src={Logout} alt="" />
       <p className='max-lg:text-sm text-white'>Logout</p> 
       </div>
